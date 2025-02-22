@@ -40,7 +40,7 @@ const Home = () => {
     setLoading(true);
     try {
       if (cryptoType == "binance-spot") {
-        let url = `https://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev/binance-spot-data?interval=${intervalValue}&limit=${limitNumber}`;
+        let url = `https://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev/binance-spot-data?interval=${intervalValue}&limit=${limitNumber}`;  //change this url with localhost or any server hosted url eg . https://localhost:3000/binance-spot-data?interval=${intervalValue}&limit=${limitNumber} 
         let fetched = await fetch(url);
         let json = await fetched.json();
         let data = await json;
@@ -50,7 +50,7 @@ const Home = () => {
         setLoading(false);
       }
       if (cryptoType == "binance-futures") {
-        let url = `https://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev/binance-futures-data?interval=${intervalValue}&limit=${limitNumber}`;
+        let url = `https://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev/binance-futures-data?interval=${intervalValue}&limit=${limitNumber}`; //change this url with localhost or any server hosted url eg . https://localhost:3000/binance-futures-data?interval=${intervalValue}&limit=${limitNumber}
         let fetched = await fetch(url);
         let json = await fetched.json();
         let data = await json;
@@ -60,7 +60,7 @@ const Home = () => {
       }
 
       if (cryptoType == "mexc-spot") {
-        let url = `https://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev/mexc-spot-data?interval=${intervalValue}&limit=${limitNumber}`;
+        let url = `https://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev/mexc-spot-data?interval=${intervalValue}&limit=${limitNumber}`; //change this url with localhost or any server hosted url eg . https://localhost:3000/mexc-spot-data?interval=${intervalValue}&limit=${limitNumber}
         let fetched = await fetch(url);
         let json = await fetched.json();
         let data = await json;
@@ -70,7 +70,7 @@ const Home = () => {
       }
 
       if (cryptoType == "mexc-futures") {
-        let url = `https://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev/mexc-futures-data?interval=${intervalValue}&start=${toUnixTimestamp(startDate)}&end=${toUnixTimestamp(endDate)}`;
+        let url = `https://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev/mexc-futures-data?interval=${intervalValue}&start=${toUnixTimestamp(startDate)}&end=${toUnixTimestamp(endDate)}`; //change this url with localhost or any server hosted url eg . https://localhost:3000/mexc-futures-data?interval=${intervalValue}&limit=${limitNumber}
         let fetched = await fetch(url);
         let json = await fetched.json();
         let data = await json;
@@ -99,7 +99,7 @@ const Home = () => {
       }
 
       if (cryptoType == "kucoin-spot") {
-        let url = `https://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev/kucoin-spot-data?interval=${intervalValue}&start=${toUnixTimestamp(startDate)}&end=${toUnixTimestamp(endDate)}`;
+        let url = `https://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev/kucoin-spot-data?interval=${intervalValue}&start=${toUnixTimestamp(startDate)}&end=${toUnixTimestamp(endDate)}`; //change this url with localhost or any server hosted url eg . https://localhost:3000/kucoin-spot-data?interval=${intervalValue}&limit=${limitNumber}
         let fetched = await fetch(url);
         let json = await fetched.json();
         let data = await json;
@@ -109,7 +109,7 @@ const Home = () => {
       }
 
       if (cryptoType == "kucoin-futures") {
-        let url = `https://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev/kucoin-futures-data?interval=${intervalValue}&start=${toUnixMiliseconds(startDate)}&end=${toUnixMiliseconds(endDate)}`;
+        let url = `https://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev/kucoin-futures-data?interval=${intervalValue}&start=${toUnixMiliseconds(startDate)}&end=${toUnixMiliseconds(endDate)}`; //change this url with localhost or any server hosted url eg . https://localhost:3000/kucoin-futures-data?interval=${intervalValue}&limit=${limitNumber}
         let fetched = await fetch(url);
         let json = await fetched.json();
         let data = await json;
@@ -118,7 +118,7 @@ const Home = () => {
         setLoading(false);
       }
       if (cryptoType == "bybit-spot") {
-        let url = `https://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev/bybit-spot-data?interval=${intervalValue}&start=${toUnixMiliseconds(startDate)}&end=${toUnixMiliseconds(endDate)}`;
+        let url = `https://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev/bybit-spot-data?interval=${intervalValue}&start=${toUnixMiliseconds(startDate)}&end=${toUnixMiliseconds(endDate)}`; //change this url with localhost or any server hosted url eg . https://localhost:3000/bybit-spot-data?interval=${intervalValue}&limit=${limitNumber}
         let fetched = await fetch(url);
         let json = await fetched.json();
         let data = await json;
