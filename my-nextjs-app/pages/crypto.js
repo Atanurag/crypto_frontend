@@ -4,20 +4,20 @@ import HighchartsReact from "highcharts-react-official";
 
 const WsChart = ({ cryptoName }) => {
   const [chartData, setChartData] = useState([]);
-  const chartRef = useRef(null); // Reference to Highcharts instance
+  const chartRef = useRef(null);
 
   useEffect(() => {
-    const ws = new WebSocket("wss://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev:3000/"); // change this url by server wss endpoint
+    const ws = new WebSocket("wss://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev:3000/"); // change this url by server wss endpoint  eg: ws://localhost:3000
     ws.onmessage = (event) => {
         try {
-         // console.log("📩 Raw WebSocket Message:", event.data); // Debugging purpose
+         // console.log("Raw WebSocket Message:", event.data); // Debugging purpose
           const data = JSON.parse(event.data);
       
           if (data.k) {
-            const { t, o, h, l, c, v } = data.k; // Extract relevant fields which we need to show
+            const { t, o, h, l, c, v } = data.k;
       
             if (!t || !o || !h || !l || !c || !v) {
-              return; // Ignore incomplete messages if no data
+              return; 
             }
       
           
@@ -37,7 +37,7 @@ const WsChart = ({ cryptoName }) => {
               return updatedData;
             });
       
-            // Update chart dynamically
+        
             if (chartRef.current) {
               const series = chartRef.current.chart.series[0];
               series.addPoint(newCandle, true, series.data.length >= 100);
@@ -59,7 +59,7 @@ const WsChart = ({ cryptoName }) => {
     yAxis: [
       {
         title: { text: "Price" },
-        height: "70%", // Price chart occupies 70%
+        height: "70%",
         lineWidth: 2,
       },
       
@@ -79,13 +79,7 @@ const WsChart = ({ cryptoName }) => {
         upColor: "green",
         data: chartData.map((candle) => [candle[0], candle[1], candle[2], candle[3], candle[4]]),
       },
-    //   {
-    //     type: "column", // Bar chart for volume
-    //     name: "Volume",
-    //     yAxis: 1, // Assign volume to the second y-axis
-    //     data: chartData.map((candle) => [candle[0], candle[5]]), // Volume data
-    //     color: "#7cb5ec", // Volume bars color
-    //   },
+    
     ],
   };
   
