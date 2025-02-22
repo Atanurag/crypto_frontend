@@ -37,3 +37,42 @@ Follow these steps to set up the project locally:
 
    http://localhost:3000
 
+
+## Usage
+
+This frontend application provides a comprehensive interface for accessing cryptocurrency data. Below are the key features and usage flow:
+
+### Features
+
+- **Cryptocurrency Filtering**: 
+  - The application includes a filter section that allows users to select specific cryptocurrencies. Each cryptocurrency is linked to its corresponding parameters required to access its data.
+  
+- **Historical Data Display**: 
+  - Historical data is presented in two formats:
+    - **Grid Format**: A tabular representation of historical data for easy comparison and analysis.
+    - **Candlestick Charts**: Visual representation of price movements over time, allowing users to analyze trends and patterns.
+
+- **Real-Time Data Access**: 
+  - The application utilizes the Binance Spot WebSocket endpoint to provide real-time data for selected cryptocurrencies. This endpoint is publicly accessible and offers a reliable source of market data.
+  - Other exchanges like MEXC, KuCoin, and Bybit are not completely public WebSocket endpoints that are often restricted by token-based access or have un-availability, making them less reliable for real-time data compared to the consistently accessible Binance Spot WebSocket endpoint.
+
+### How to Use
+
+1. **Select Cryptocurrencies**: 
+   - Use the filter section to choose the cryptocurrencies you want to analyze. The application will automatically adjust the parameters based on your selection.
+
+2. **View Historical Data**: 
+   - Once you have selected the cryptocurrencies, you can view their historical data in both grid and candlestick chart formats.
+
+3. **Access Real-Time Data**: 
+   - To start receiving real-time data, click the "Get WS Binance Data" button. This will initiate a connection to the Binance Spot WebSocket endpoint and begin streaming live data for the selected cryptocurrencies.
+
+*Note*
+
+- Ensure that your backend server is running and properly configured to handle requests from the frontend.
+- Make sure to have a stable internet connection to receive real-time updates without interruptions.
+
+This application aims to provide a user-friendly experience for cryptocurrency analysis, leveraging the power of real-time data and historical insights.
+
+
+
