@@ -2,26 +2,25 @@ import { useEffect, useState, useRef } from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 
-const CryptoChart = ({ cryptoName }) => {
+const WsChart = ({ cryptoName }) => {
   const [chartData, setChartData] = useState([]);
   const chartRef = useRef(null); // Reference to Highcharts instance
 
   useEffect(() => {
-    const ws = new WebSocket("wss://5c8c2a0d-ca5e-42e9-a43d-f431d4ae066f-00-8hlx8r8eujc3.sisko.replit.dev/");
+    const ws = new WebSocket("wss://7bdf105a-eaa2-4b52-8ca2-002d0e451b9c-00-wyq97l12pmk8.pike.replit.dev:3000/"); // change this url by server wss endpoint
     ws.onmessage = (event) => {
         try {
-         // console.log("📩 Raw WebSocket Message:", event.data); // Debugging
+         // console.log("📩 Raw WebSocket Message:", event.data); // Debugging purpose
           const data = JSON.parse(event.data);
       
           if (data.k) {
-            const { t, o, h, l, c, v } = data.k; // Extract relevant fields
+            const { t, o, h, l, c, v } = data.k; // Extract relevant fields which we need to show
       
             if (!t || !o || !h || !l || !c || !v) {
-              console.warn("⚠️ Missing data fields:", data.k);
-              return; // Ignore incomplete messages
+              return; // Ignore incomplete messages if no data
             }
       
-            const volume = parseFloat(v) || 0; // Default to 0 if volume is undefined
+          
 
             const newCandle = [
               t, // Timestamp
@@ -29,12 +28,12 @@ const CryptoChart = ({ cryptoName }) => {
               parseFloat(h), // High
               parseFloat(l), // Low
               parseFloat(c), // Close
-              volume, // Ensure volume is included
+             
             ];
             
       
             setChartData((prevData) => {
-              const updatedData = [...prevData.slice(-99), newCandle]; // Keep only last 100 candles
+              const updatedData = [...prevData.slice(-99), newCandle];
               return updatedData;
             });
       
@@ -45,7 +44,7 @@ const CryptoChart = ({ cryptoName }) => {
             }
           }
         } catch (error) {
-          console.warn("⚠️ Error parsing WebSocket message:", event.data);
+          console.warn("Error parsing WebSocket message:", event.data);
         }
       };
       
@@ -54,7 +53,7 @@ const CryptoChart = ({ cryptoName }) => {
   }, []);
 
   const chartOptions = {
-    title: { text: cryptoName },
+    title: { text: 'Binance Spot ' },
     chart: { height: 600 },
     xAxis: { type: "datetime" },
     yAxis: [
@@ -63,13 +62,7 @@ const CryptoChart = ({ cryptoName }) => {
         height: "70%", // Price chart occupies 70%
         lineWidth: 2,
       },
-      {
-        title: { text: "Volume" },
-        top: "75%", // Volume chart starts after 70% height
-        height: "25%", // Volume chart occupies 25%
-        offset: 0,
-        lineWidth: 2,
-      },
+      
     ],
     navigator: { enabled: true },
     scrollbar: { enabled: true },
@@ -84,15 +77,15 @@ const CryptoChart = ({ cryptoName }) => {
         },
         color: "red",
         upColor: "green",
-        data: chartData.map((candle) => [candle[0], candle[1], candle[2], candle[3], candle[4]]), // Exclude volume
+        data: chartData.map((candle) => [candle[0], candle[1], candle[2], candle[3], candle[4]]),
       },
-      {
-        type: "column", // Bar chart for volume
-        name: "Volume",
-        yAxis: 1, // Assign volume to the second y-axis
-        data: chartData.map((candle) => [candle[0], candle[5]]), // Volume data
-        color: "#7cb5ec", // Volume bars color
-      },
+    //   {
+    //     type: "column", // Bar chart for volume
+    //     name: "Volume",
+    //     yAxis: 1, // Assign volume to the second y-axis
+    //     data: chartData.map((candle) => [candle[0], candle[5]]), // Volume data
+    //     color: "#7cb5ec", // Volume bars color
+    //   },
     ],
   };
   
@@ -118,40 +111,4 @@ const CryptoChart = ({ cryptoName }) => {
   );
 };
 
-export default CryptoChart;
-
-
-
-
-// import { useEffect, useState } from "react";
-
-// const BinanceWebSocket = () => {
-//   const [price, setPrice] = useState(null);
-
-//   useEffect(() => {
-//     const ws = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@kline_1s");
-
-//     ws.onopen = () => console.log("✅ Connected to Binance WebSocket");
-
-//     ws.onmessage = (event) => {
-//       const data = JSON.parse(event.data);
-//      // console.log(data);
-//       setPrice(data.k.c); // Closing price
-//     };
-
-//     ws.onerror = (error) => console.error("❌ WebSocket Error:", error);
-
-//     ws.onclose = () => console.log("❌ Disconnected from WebSocket");
-
-//     return () => ws.close();
-//   }, []);
-
-//   return (
-//     <div className="p-4 border rounded-md shadow-md bg-white">
-//       <h2 className="text-lg font-semibold">BTC/USDT Price</h2>
-//       {price ? <p className="text-xl font-bold">{price} USDT</p> : <p>Loading...</p>}
-//     </div>
-//   );
-// };
-
-// export default BinanceWebSocket;
+export default WsChart;

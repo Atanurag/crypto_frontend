@@ -5,7 +5,6 @@ import HighchartsReact from "highcharts-react-official";
 import { useState } from "react";
 
 const CandleChart = ({ chartData ,loading,cryptoName}) => {
-  console.log(chartData, "pp");
 
   const chartOptions = {
     title: { text:cryptoName },
@@ -68,7 +67,7 @@ const CandleChart = ({ chartData ,loading,cryptoName}) => {
     <div className="border border-gray-300 bg-white shadow-2xl rounded-2xl p-6 w-full mx-auto relative transition-all duration-300 hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)]">
       {loading ? (
         <div className="flex items-center justify-center h-96">
-          <span className="text-gray-700 text-lg font-semibold animate-pulse">
+          <span className="text-dark text-lg font-semibold animate-pulse">
             Loading...
           </span>
         </div>
