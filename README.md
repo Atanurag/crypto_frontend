@@ -54,7 +54,7 @@ This frontend application provides a comprehensive interface for accessing crypt
 
 - **Real-Time Data Access**: 
   - The application utilizes the Binance Spot WebSocket endpoint to provide real-time data for selected cryptocurrencies. This endpoint is publicly accessible and offers a reliable source of market data.
-  - Other exchanges like MEXC, KuCoin, and Bybit are not completely public WebSocket endpoints that are often restricted by token-based access or have un-availability, making them less reliable for real-time data compared to the consistently accessible Binance Spot WebSocket endpoint.
+  - Other exchanges like MEXC, KuCoin, and Bybit, Bybit(futures for historical) are not completely public WebSocket endpoints that are often restricted by token-based access or have un-availability, making them less reliable for real-time data compared to the consistently accessible Binance Spot WebSocket endpoint.
 
 ### How to Use
 
