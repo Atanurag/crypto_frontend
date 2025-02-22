@@ -19,7 +19,7 @@ Follow these steps to set up the project locally:
    Open your terminal and run the following command to clone the repository:
 
    
-   git clone https://github.com/your-username/your-repo-name.git](https://github.com/Atanurag/crypto_frontend.git
+   git clone https://github.com/Atanurag/crypto_frontend.git
    
 2.*Navigate to the project dir*
 
